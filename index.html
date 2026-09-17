@@ -1,83 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Maré — Tábua de marés e fases da lua</title>
-<meta name="description" content="Calculadora de tábua de marés e fase da lua para surfistas: estime picos e vazantes do dia. Satélite do app ASF.">
-<style>
-:root{--rosa:#e63970;--areia:#fff5ee;--mar:#0b6e6e;--escuro:#12303a}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-body{background:var(--areia);color:var(--escuro)}
-header{background:linear-gradient(135deg,#1a2a6c,#21a0a0);color:#fff;padding:2.2rem 1rem;text-align:center}
-header h1{font-size:2rem}header p{opacity:.95;margin-top:.4rem;font-size:.95rem}
-nav{background:var(--escuro);display:flex;flex-wrap:wrap;justify-content:center;gap:.25rem;padding:.5rem;position:sticky;top:0;z-index:10}
-nav a{color:#fff;text-decoration:none;padding:.4rem .65rem;border-radius:.5rem;font-size:.82rem}
-nav a:hover,nav a.ativo{background:var(--rosa)}
-main{max-width:720px;margin:0 auto;padding:2rem 1rem}
-.card{background:#fff;border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.07)}
-.card h2{color:#1a2a6c;margin-bottom:.6rem}
-.lua{text-align:center;padding:1rem}
-.lua .icone{font-size:4rem}
-.lua strong{display:block;font-size:1.2rem;margin:.5rem 0;color:#1a2a6c}
-.mares{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
-.mare{border-radius:.75rem;padding:1rem;text-align:center}
-.mare.cheia{background:#dbeafe;color:#1e40af}
-.mare.vazante{background:#fef3c7;color:#92400e}
-.mare .hora{font-size:1.5rem;font-weight:bold}
-input[type=date]{width:100%;padding:.7rem;border:2px solid #ddd;border-radius:.5rem;font-size:1rem;margin-top:.3rem}
-.alerta{background:#fff3cd;border-left:4px solid #d7263d;border-radius:.5rem;padding:1rem;font-size:.85rem;margin-top:1rem}
-footer{background:var(--escuro);color:#cfe;padding:1.5rem;text-align:center;font-size:.85rem}
-footer a{color:#ff9ec0}
-</style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASF Maré — Relógio de marés ao vivo</title>
+<meta name="description" content="Altura de onda e tendência da maré ao vivo no litoral norte de SP, com gráfico das próximas 24h. Satélite do app ASF.">
+<style>:root{--p:#00a8cc;--pd:#0e2439;--g:#f4d03f}*{box-sizing:border-box;margin:0}body{font-family:system-ui,sans-serif;background:#f6fbfd;color:var(--pd)}nav{background:var(--pd);padding:10px 14px;display:flex;flex-wrap:wrap;gap:7px;position:sticky;top:0}nav a{color:#fff;text-decoration:none;font-size:11px;font-weight:600;padding:5px 9px;border-radius:20px;background:rgba(255,255,255,.08)}nav a:hover{background:var(--p)}nav a.hub{background:var(--g);color:var(--pd)}header{padding:36px 20px;text-align:center;background:linear-gradient(135deg,#00a8cc25,#9b59b615)}h1{font-size:26px}main{max-width:640px;margin:22px auto;padding:0 16px}.card{background:#fff;border-radius:14px;padding:18px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}select{width:100%;padding:11px;border:1.5px solid var(--p);border-radius:10px;font-size:14px;font-family:inherit;margin-bottom:12px}.big{font-size:42px;font-weight:800;color:var(--p)}.muted{color:#678;font-size:12px}canvas{width:100%;height:180px}footer{text-align:center;padding:26px;font-size:12px;color:#678}</style>
 </head>
 <body>
-<header><h1>🌙 ASF Maré</h1><p>Tábua de marés estimada + fase da lua para planejar sua sessão</p></header>
 <nav>
-<a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ App</a>
-<a href="https://acarolmourad-commits.github.io/asf-praias/">🏖️ Praias</a>
-<a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊 Previsão</a>
-<a class="ativo" href="https://acarolmourad-commits.github.io/asf-mare/">🌙 Maré</a>
-<a href="https://acarolmourad-commits.github.io/asf-mapa/">🗺️ Mapa</a>
-<a href="https://acarolmourad-commits.github.io/asf-treino/">💪 Treino</a>
-<a href="https://acarolmourad-commits.github.io/asf-diario/">📝 Diário</a>
-<a href="https://acarolmourad-commits.github.io/asf-yoga/">🧘‍♀️ Yoga</a>
-<a href="https://acarolmourad-commits.github.io/asf-nutricao/">🥗 Nutrição</a>
-<a href="https://acarolmourad-commits.github.io/asf-eventos/">📅 Eventos</a>
-<a href="https://acarolmourad-commits.github.io/asf-glossario/">📖 Glossário</a>
-<a href="https://acarolmourad-commits.github.io/asf-comunidade/">🌸 Comunidade</a>
-<a href="https://acarolmourad-commits.github.io/asf-seguranca/">🛟 Segurança</a>
-<a href="https://acarolmourad-commits.github.io/asf-sos/">🆘 SOS</a>
-<a href="https://acarolmourad-commits.github.io/asf-equipamento/">🏄 Equipamento</a>
-<a href="https://acarolmourad-commits.github.io/asf-quiz/">❓ Quiz</a>
-<a href="https://acarolmourad-commits.github.io/asf-eco/">🌱 Eco</a>
+<a class="hub" href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
+<a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊</a>
+<a href="https://acarolmourad-commits.github.io/asf-praias/">🏖️</a>
+<a href="https://acarolmourad-commits.github.io/asf-treino/">💪</a>
+<a href="https://acarolmourad-commits.github.io/asf-eventos/">📅</a>
+<a href="https://acarolmourad-commits.github.io/asf-glossario/">📖</a>
+<a href="https://acarolmourad-commits.github.io/asf-comunidade/">💜</a>
+<a href="https://acarolmourad-commits.github.io/asf-seguranca/">🛟</a>
+<a href="https://acarolmourad-commits.github.io/asf-bemestar/">🧘</a>
+<a href="https://acarolmourad-commits.github.io/asf-quiz/">🧠</a>
+<a href="https://acarolmourad-commits.github.io/asf-equipamento/">🏄</a>
+<a href="https://acarolmourad-commits.github.io/asf-nutricao/">🥑</a>
+<a href="https://acarolmourad-commits.github.io/asf-viagens/">✈️</a>
+<a href="https://acarolmourad-commits.github.io/asf-historia/">📜</a>
+<a href="https://acarolmourad-commits.github.io/asf-respira/">🫁</a>
+<a href="https://acarolmourad-commits.github.io/asf-diario/">📓</a>
+<a href="https://acarolmourad-commits.github.io/asf-volume/">📐</a>
 </nav>
+<header><h1>🌙 ASF Maré</h1><p>Ondas das próximas 24h, ao vivo — escolha a praia e ache a melhor janela</p></header>
 <main>
-<div class="card"><h2>Escolha o dia 📅</h2><input type="date" id="data"></div>
-<div class="card lua"><div class="icone" id="luaIco">🌕</div><strong id="luaNome">—</strong><p id="luaInfo" style="color:#666;font-size:.9rem"></p></div>
-<div class="card"><h2>Marés estimadas do dia 🌊</h2><div class="mares" id="mares"></div>
-<div class="alerta">⚠️ <strong>Estimativa astronômica simplificada</strong> (maré semidiurna ~12h25min, ajustada pela idade lunar). Para decisões de segurança, confira sempre a tábua oficial da Marinha e a <a href="https://acarolmourad-commits.github.io/asf-previsao/">previsão de ondas</a>.</div></div>
+<div class="card">
+<select id="praia" onchange="loadData()">
+<option value="-23.82,-45.56">Maresias</option>
+<option value="-23.78,-45.67">Praia da Baleia</option>
+<option value="-23.40,-45.00">Itamambuca (Ubatuba)</option>
+<option value="-23.52,-45.17">Camburi</option>
+</select>
+<div class="big" id="now">—</div>
+<p class="muted" id="nowsub">altura de onda agora</p>
+<p id="best" style="margin-top:10px;font-size:14px;font-weight:600"></p>
+</div>
+<div class="card"><p class="muted" style="margin-bottom:8px">📈 Próximas 24h (altura de onda em metros)</p><canvas id="cv" width="600" height="180"></canvas></div>
+<p class="muted" style="text-align:center">Fonte: Open-Meteo Marine API • Combine com a <a href="https://acarolmourad-commits.github.io/asf-previsao/">Previsão</a> e o guia de <a href="https://acarolmourad-commits.github.io/asf-praias/">Praias</a> para escolher o pico.</p>
 </main>
-<footer>Parte do ecossistema <a href="https://acarolmourad-commits.github.io/asf-app/">ASF — Associação de Surf Feminino</a> · Publicado via GitHub Pages</footer>
+<footer>Parte da constelação ASF • <a href="https://acarolmourad-commits.github.io/asf-app/">Voltar ao app principal</a></footer>
 <script>
-const FASES=[[0,'🌑','Lua Nova','Marés de sizígia: maior amplitude do mês'],[3.7,'🌒','Crescente',''],[7.4,'🌓','Quarto Crescente','Marés de quadratura: amplitude menor'],[11,'🌔','Gibosa Crescente',''],[14.8,'🌕','Lua Cheia','Marés de sizígia: maior amplitude do mês'],[18.4,'🌖','Gibosa Minguante',''],[22.1,'🌗','Quarto Minguante','Marés de quadratura: amplitude menor'],[25.8,'🌘','Minguante','']];
-function idadeLua(d){const ref=Date.UTC(2000,0,6,18,14);return(((d-ref)/86400000)%29.530588+29.530588)%29.530588;}
-function fmt(min){const h=Math.floor(min/60)%24,m=Math.round(min%60);return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');}
-function calc(){
- const v=document.getElementById('data').value;if(!v)return;
- const d=Date.parse(v+'T12:00:00Z');const idade=idadeLua(d);
- let fase=FASES[0];for(const f of FASES)if(idade>=f[0])fase=f;
- document.getElementById('luaIco').textContent=fase[1];document.getElementById('luaNome').textContent=fase[2]+' · '+idade.toFixed(1)+' dias';
- document.getElementById('luaInfo').textContent=fase[3]||'Marés em transição entre quadratura e sizígia';
- // estimativa: primeira preamar ~ (idade * 50.5min) após meia-noite, ciclo 12h25
- const base=idade*50.5;const ciclo=745;let html='';
- let t=base;
- for(let k=0;k<4&&t<1440;k++){const cheia=k%2===0;
-  html+=`<div class="mare ${cheia?'cheia':'vazante'}"><div class="hora">${fmt(t)}</div>${cheia?'⬆️ Preamar (cheia)':'⬇️ Baixa-mar (vazante)'}</div>`;
-  t+=ciclo/2;}
- document.getElementById('mares').innerHTML=html;
+async function loadData(){
+ const [lat,lon]=document.getElementById('praia').value.split(',');
+ document.getElementById('now').textContent='…';
+ const r=await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}&hourly=wave_height&timezone=America%2FSao_Paulo&forecast_days=2`).then(x=>x.json());
+ const hs=r.hourly.wave_height.slice(0,24),times=r.hourly.time.slice(0,24);
+ const hNow=hs[new Date().getHours()]??hs[0];
+ document.getElementById('now').textContent=hNow!=null?hNow.toFixed(1)+' m':'—';
+ const mx=Math.max(...hs.filter(v=>v!=null));
+ const bi=hs.indexOf(mx);
+ document.getElementById('best').textContent='🏆 Melhor janela: '+times[bi].slice(11,16)+'h com '+mx.toFixed(1)+' m';
+ draw(hs,times);
 }
-document.getElementById('data').valueAsDate=new Date();document.getElementById('data').onchange=calc;calc();
+function draw(hs,times){
+ const cv=document.getElementById('cv'),c=cv.getContext('2d');c.clearRect(0,0,600,180);
+ const vs=hs.map(v=>v??0),mx=Math.max(...vs,0.5),mn=Math.min(...vs,0);
+ c.strokeStyle='#dde';c.beginPath();c.moveTo(0,150);c.lineTo(600,150);c.stroke();
+ c.beginPath();c.strokeStyle='#00a8cc';c.lineWidth=2.5;
+ vs.forEach((v,i)=>{const x=i/(vs.length-1)*590+5,y=150-((v-mn)/(mx-mn||1))*130;i?c.lineTo(x,y):c.moveTo(x,y)});
+ c.stroke();c.lineTo(595,150);c.lineTo(5,150);c.closePath();c.fillStyle='#00a8cc18';c.fill();
+ c.fillStyle='#0e2439';c.font='11px system-ui';
+ [0,6,12,18,23].forEach(i=>c.fillText(times[i].slice(11,16)+'h',i/(vs.length-1)*560+8,170));
+}
+loadData();
 </script>
 </body>
 </html>
