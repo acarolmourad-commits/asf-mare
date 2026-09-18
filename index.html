@@ -22,10 +22,38 @@ input,select,textarea{padding:.5rem;border:1px solid #ddd;border-radius:10px;wid
 .xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002;z-index:20}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 </style>
+<style>.faq details{background:#fff;border-radius:14px;padding:14px 18px;margin:10px auto;max-width:860px;box-shadow:0 2px 10px rgba(14,36,57,.06);text-align:left}.faq summary{font-weight:700;cursor:pointer;font-size:14.5px}.faq p{font-size:14px;margin-top:8px;color:#5A6B7A}.faq h2{font-size:19px;margin:28px auto 12px;max-width:860px;text-align:left}</style>
 <link rel="canonical" href="https://acarolmourad-commits.github.io/asf-mare/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"ASF Maré","url":"https://acarolmourad-commits.github.io/asf-mare/","applicationCategory":"SportsApplication","operatingSystem":"Web","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"ASF — Associação Surf Feminino","url":"https://acarolmourad-commits.github.io/asf-app/"}}
 </script>
+<!-- ========== SEO Padrão Google (rede ASF) ========== -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="ASF — Associação de Surf Feminino">
+<meta name="geo.region" content="BR-SP">
+<meta name="geo.placename" content="Litoral Norte de São Paulo">
+<meta name="language" content="pt-BR">
+<meta name="theme-color" content="#ff4d8d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ASF — Associação de Surf Feminino">
+<meta property="og:title" content="ASF Maré — Tábua de marés e fases da lua para surfistas">
+<meta property="og:description" content="Calculadora de tábua de marés e fases da lua para surfistas: estado da maré, próxima preamar e amplitude de sizígia/quadratura.">
+<meta property="og:url" content="https://acarolmourad-commits.github.io/asf-mare/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASF Maré — Tábua de marés e fases da lua para surfistas">
+<meta name="twitter:description" content="Calculadora de tábua de marés e fases da lua para surfistas: estado da maré, próxima preamar e amplitude de sizígia/quadratura.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"ASF Maré — Tábua de marés e fases da lua","url":"https://acarolmourad-commits.github.io/asf-mare/","applicationCategory":"SportsApplication","operatingSystem":"Web","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"ASF — Associação Surf Feminino","url":"https://acarolmourad-commits.github.io/asf-app/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ASF App","item":"https://acarolmourad-commits.github.io/asf-app/"},{"@type":"ListItem","position":2,"name":"ASF Maré","item":"https://acarolmourad-commits.github.io/asf-mare/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como a maré afeta o surf no litoral norte de SP?","acceptedAnswer":{"@type":"Answer","text":"Cada pico funciona melhor em um estado de maré: bancadas rasas pedem maré mais cheia; praias fundas funcionam na seca. Maré enchendo costuma trazer mais energia para as ondas."}},{"@type":"Question","name":"O que é maré de sizígia e quadratura?","acceptedAnswer":{"@type":"Answer","text":"Na sizígia (lua nova e cheia) a amplitude é maior: preamares mais altas e baixamares mais secas, com correntes mais fortes. Na quadratura (quartos crescente e minguante) a amplitude é menor."}},{"@type":"Question","name":"Como o ASF Maré calcula a tábua de marés?","acceptedAnswer":{"@type":"Answer","text":"O cálculo usa o ciclo lunar médio de 29,53 dias e o período de maré semidiurno de ~12,42h para estimar fase da lua, estado da maré (enchendo/esvaziando) e a próxima preamar."}}]}
+</script>
+<!-- ========== Fim SEO ========== -->
 </head>
 <body>
 <header><h1>🌙 ASF Maré</h1><p>Calculadora de tábua de marés e fases da lua para surfistas</p></header>
@@ -100,6 +128,12 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <div class="card"><h2>📏 Tábua oficial</h2>
 <p>Esta página faz uma <b>estimativa astronômica simplificada</b>. Para dados oficiais, consulte a Tábua de Marés da <b>Marinha do Brasil (DHN)</b> ou estações maregráficas locais — fatores como vento e pressão atmosférica alteram a maré real.</p></div>
 <div class="card"><h2>🌐 Ecossistema ASF</h2><p>Este app faz parte da constelação ASF — Associação de Surf Feminino. Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. App principal: <a href="https://acarolmourad-commits.github.io/asf-app/">ASF App</a>.</p></div>
+<section class="faq">
+<h2>Perguntas frequentes</h2>
+<details><summary>Como a maré afeta o surf no litoral norte de SP?</summary><p>Cada pico funciona melhor em um estado de maré: bancadas rasas pedem maré mais cheia; praias fundas funcionam na seca. Maré enchendo costuma trazer mais energia para as ondas.</p></details>
+<details><summary>O que é maré de sizígia e quadratura?</summary><p>Na sizígia (lua nova e cheia) a amplitude é maior: preamares mais altas e baixamares mais secas, com correntes mais fortes. Na quadratura (quartos crescente e minguante) a amplitude é menor.</p></details>
+<details><summary>Como o ASF Maré calcula a tábua de marés?</summary><p>O cálculo usa o ciclo lunar médio de 29,53 dias e o período de maré semidiurno de ~12,42h para estimar fase da lua, estado da maré (enchendo/esvaziando) e a próxima preamar.</p></details>
+</section>
 </main>
 <div class="xp">⭐ XP: <span id="xp">0</span></div>
 <footer>ASF — Associação de Surf Feminino · Feito com 🌊 e 💜 · <a href="https://acarolmourad-commits.github.io/">hub</a> · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
