@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://acarolmourad-commits.github.io/asf-mare/sitemap.xml
+Sitemap: https://mare.asf.surf/sitemap.xml
